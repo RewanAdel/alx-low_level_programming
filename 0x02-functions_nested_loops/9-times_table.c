@@ -10,35 +10,40 @@
 
 void times_table(void)
 {
-	int n, i, m, ones, tens;
+	int n = 0;
+	int i;
+	int m;
 
-	for (i = 0; i <= 9; i++)
+	while (n <= 9)
 	{
-		for (n = 0; n <= 9; n++)
+		i = 0;
+		while (i <= 9)
 		{
 			m = n * i;
-			tens = m / 10;
-			ones = m % 10;
-
 			if (i == 0)
 			{
-				_putchar('0');
+				_putchar('0' + m);
 			}
 			else if (m < 10)
 			{
-				_putchar(',');
 				_putchar(' ');
-				_putchar(' ');
-				_putchar(ones + '0');
+				_putchar('0' + m);
 			}
 			else
 			{
+				_putchar('0' + m / 10);
+				_putchar('0' + m % 10);
+			}
+			if (i < 9)
+			{
 				_putchar(',');
 				_putchar(' ');
-				_putchar(tens + '0');
-				_putchar(ones + '0');
 			}
+			i++;
 		}
 		_putchar('\n');
+		n++;
 	}
+
 }
+
