@@ -11,24 +11,25 @@
 
 int main(void)
 {
-	int x = 0;
-	long int a = 0, b = 1, then;
+	long int sum, a, b;
+	int count;
 
-	while (x < 50)
+	sum = 0;
+	a = 0;
+	b = 1;
+	count = 0;
+
+	while (count < 49)
 	{
-		then = a + b;
-		b = then;
+		sum = a + b;
+		printf("%li, ", sum);
 		a = b;
-		printf("%lu", then);
+		b = sum;
 
-		if (x < 49)
-		{
-			printf(", ");
-		}
-		x++;
+		count++;
 	}
-	putchar('\n');
+	sum = a + b;
+	printf("%li\n", sum);
+
 	return (0);
 }
-
-
