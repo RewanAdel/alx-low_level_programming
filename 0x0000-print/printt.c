@@ -1,46 +1,51 @@
 #include "main.h"
 
 /**
- * _printf - prints output according to format
- * @format: string being passed
- * Return: char to be printed
+ * _printf - function that produces output according to a format
+ * @format: character string
+ * Return: number of characters printed
  */
 
 int _printf(const char *format, ...)
 {
-   va_list args;
-   int count = 0;
+	va_list x;
+	int reading = 0;
 
-   va_start(args, format);
+	va_start(x, format);
 
-   while (*format != '\0') {
-      if (*format == '%') {
-         format++;
-         switch (*format) {
-            case 'c':
-               count += printf("%c", va_arg(args, int));
-               break;
-            case 's':
-               count += printf("%s", va_arg(args, char *));
-               break;
-            case '%':
-               count += printf("%%");
-               break;
-            case 'd':
-            case 'i':
-               count += printf("%d", va_arg(args, int));
-               break;
-            default:
-               break;
-         }
-      } else {
-         putchar(*format);
-         count++;
-      }
-      format++;
-   }
-
-   va_end(args);
-
-   return count;
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format++;
+			switch (*format)
+			{
+				case 'c':
+					reading += printf("%c", va_arg(x, int));
+					break;
+				case 's':
+					reading += printf("%s", va_arg(x, char *));
+					break;
+				case '%':
+					reading += printf("%%");
+					break;
+				case 'd':
+					reading += printf("%d", va_arg(x, int));
+					break;
+				case 'i':
+					reading += printf("%d", va_arg(x, int));
+					break;
+				default:
+					break;
+			}
+		}
+		else
+		{
+			putchar(*format);
+			reading++;
+		}
+		format++;
+	}
+	va_end(x);
+	return (reading);
 }
